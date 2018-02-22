@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- <context:property-placeholder location="classpath:application.properties" /> -->
+
+	<!-- ConnectionFactoryRegistry 클래스는 ConnectionFactoryLocator 인터페이스의 구현체이다. -->
+	<!-- 
+	<bean id="connectionFactoryLocator" class="org.springframework.social.connect.support.ConnectionFactoryRegistry">
+		<property name="connectionFactories">
+			<list>
+				<bean class="org.springframework.social.facebook.connect.FacebookConnectionFactory">
+					<constructor-arg value="${spring.social.facebook.appId}" />
+					<constructor-arg value="${spring.social.facebook.appSecret}" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	 -->
+	
+	<!-- 
+		org.springframework.social.config.annotation.SocialConfiguration는 부트가 사용하는 설정클래스이다.
+		org.springframework.social.connect.ConnectionRepository 인터페이스 구현체로는 다음 클래스들이 있다.
+			org.springframework.social.connect.jdbc.JdbcConnectionRepository
+			org.springframework.social.connect.mem.InMemoryConnectionRepository
+	 -->
+	<!-- 
+		Parameter 1 of method connectController in org.springframework.boot.autoconfigure.social.SocialWebAutoConfiguration$SocialAutoConfigurationAdapter required a single bean, but 2 were found:
+			- inMemoryConnectionRepository: defined in class path resource [spring/context.xml]
+			- connectionRepository: defined in BeanDefinition defined in class path resource [org/springframework/social/config/annotation/SocialConfiguration.class]
+	 -->
+	<!-- 
+	<bean id="inMemoryConnectionRepository" class="org.springframework.social.connect.mem.InMemoryConnectionRepository" primary="true">
+		<constructor-arg ref="connectionFactoryLocator" />
+	</bean>
+	 -->
+
+</beans>
